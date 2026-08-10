@@ -290,7 +290,6 @@
             opacity: 0.9;
         }
 
-        /* Ghost Button Style matching the video screenshot */
         .btn-ghost {
             background: transparent;
             color: var(--text-main);
@@ -372,7 +371,7 @@
             font-weight: 300;
         }
 
-        /* 4. SERVICES / TREATMENT SECTION (Matching TikTok screenshot) */
+        /* 4. SERVICES SECTION */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -492,7 +491,7 @@
             letter-spacing: 0.05em;
         }
 
-        /* 6. CONTACT SECTION */
+        /* 6. CONTACT SECTION & FORM FIXES */
         .contact-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -501,6 +500,7 @@
             padding: 4rem 3rem;
             border: 1px solid var(--border-light);
             box-shadow: var(--shadow-subtle);
+            width: 100%;
         }
 
         .contact-info h3 {
@@ -532,8 +532,13 @@
             margin-bottom: 0.2rem;
         }
 
+        .contact-form {
+            width: 100%;
+        }
+
         .form-group {
             margin-bottom: 1.5rem;
+            width: 100%;
         }
 
         .form-group label {
@@ -546,9 +551,12 @@
             letter-spacing: 0.15em;
         }
 
+        /* Inayos ang inputs at textarea para pantay sa mobile at desktop */
         .form-group input,
         .form-group textarea {
+            display: block;
             width: 100%;
+            box-sizing: border-box;
             padding: 1rem 1.2rem;
             border: 1px solid var(--border-light);
             background-color: var(--bg-body);
@@ -556,6 +564,8 @@
             font-size: 0.9rem;
             font-family: inherit;
             transition: all 0.3s ease;
+            resize: vertical;
+            margin: 0;
         }
 
         .form-group input:focus,
@@ -599,7 +609,13 @@
             .hero h1 { font-size: 2.6rem; }
             .section-title { font-size: 1.8rem; }
             section { padding: 4rem 1.2rem; }
-            .contact-container { padding: 2rem 1.5rem; gap: 2rem; }
+
+            /* Inayos para pantay at hindi mag-overflow ang layout sa mobile */
+            .contact-container { 
+                grid-template-columns: 1fr;
+                padding: 2rem 1.25rem; 
+                gap: 2.5rem; 
+            }
         }
     </style>
 </head>
@@ -638,7 +654,7 @@
             <p>LUMIST is a thoughtfully designed DIY lamp and humidifier bringing warm ambient light and fine ultrasonic mist into one compact piece.</p>
             
             <div class="btn-group">
-                <a href="#contact" class="btn-primary">Book / Order Now</a>
+                <a href="#contact" class="btn-primary">Order Now</a>
                 <a href="#services" class="btn-ghost">Browse Features</a>
             </div>
         </div>
@@ -704,7 +720,7 @@
         </div>
     </section>
 
-    <!-- PAGE 4: SERVICES / TREATMENTS (Matches TikTok Layout) -->
+    <!-- PAGE 4: SERVICES -->
     <section id="services">
         <div class="section-header reveal">
             <h2 class="section-title">Browse Our Features</h2>
@@ -810,12 +826,12 @@
 
                     <div class="form-group">
                         <label for="name">Full Name</label>
-                        <input type="text" id="name" name="Sender Name" placeholder="Jheana Yrish" required>
+                        <input type="text" id="name" name="Sender Name" placeholder="Alex Rivera" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" name="Sender Email" placeholder="jheana@example.com" required>
+                        <input type="email" id="email" name="Sender Email" placeholder="alex@example.com" required>
                     </div>
                     
                     <div class="form-group">
@@ -823,7 +839,7 @@
                         <textarea id="message" name="Message" rows="3" placeholder="Tell us about your order or inquiry..." required></textarea>
                     </div>
                     
-                    <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer;">
+                    <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer; display: block;">
                         Submit Request
                     </button>
                 </form>
