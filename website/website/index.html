@@ -3,35 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUMIST | Ambient Lamp & Humidifier Studio</title>
+    <title>DAYVEIL | Ambient Lamp & Humidifier Studio</title>
     
-    <!-- Google Fonts: Playfair Display (Luxury Serif) & Plus Jakarta Sans -->
+    <!-- Google Fonts: Playfair Display, Plus Jakarta Sans & Dancing Script -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Editorial Dark Luxe Theme (Default Aesthetic matching video) */
+        /* Midnight Navy Luxe Theme (Default Mode) */
         :root {
-            --bg-body: #0a0a0a;        /* Ultra Deep Luxe Black */
-            --bg-card: #141414;        /* Soft Dark Charcoal Card */
-            --bg-ice: #1a1a1a;         /* Dark Accent Box */
-            --header-bg: rgba(10, 10, 10, 0.92);
+            --bg-body: #0a1128;        /* Ultra Deep Midnight Navy */
+            --bg-card: #121e36;        /* Deep Navy Card */
+            --bg-ice: #1a2942;         /* Dark Navy Accent Box */
+            --header-bg: rgba(10, 17, 40, 0.92);
             
-            --text-main: #f3f3f3;      /* Crisp Off-White */
-            --text-muted: #a1a1aa;     /* Warm Grey */
+            --text-main: #f1f5f9;      /* Crisp Off-White */
+            --text-muted: #cbd5e1;     /* Enhanced Slate Grey for High Legibility */
             --heading-color: #ffffff;  /* Pure White Headings */
             
             --btn-dark: #ffffff;       /* Pure White Button */
-            --btn-text: #0a0a0a;
+            --btn-text: #0a1128;
             
             --border-light: rgba(255, 255, 255, 0.15);
-            --border-glow: rgba(255, 255, 255, 0.4);
-            --shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.6);
-            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.8);
+            --border-glow: rgba(148, 163, 184, 0.4);
+            --shadow-subtle: 0 10px 30px rgba(5, 10, 25, 0.6);
+            --shadow-hover: 0 20px 40px rgba(5, 10, 25, 0.8);
+            --card-radius: 0px;
+            --btn-radius: 2px;
         }
 
-        /* Light Mode Variant (Soft Warm Cream Luxe) */
+        /* Light Mode Variant (Soft Warm Cream) */
         body.light-mode {
             --bg-body: #f8f6f0;        
             --bg-card: #ffffff;        
@@ -39,16 +41,40 @@
             --header-bg: rgba(248, 246, 240, 0.92);
             
             --text-main: #18181b;      
-            --text-muted: #52525b;     
+            --text-muted: #3f3f46;     
             --heading-color: #09090b;  
             
             --btn-dark: #09090b;       
             --btn-text: #ffffff;
             
-            --border-light: rgba(24, 24, 27, 0.12);
+            --border-light: rgba(24, 24, 27, 0.15);
             --border-glow: rgba(24, 24, 27, 0.3);
             --shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.05);
             --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.1);
+            --card-radius: 0px;
+            --btn-radius: 2px;
+        }
+
+        /* Girly Pink Mode Variant (Cute & Aesthetic Soft Pink) */
+        body.pink-mode {
+            --bg-body: #fff0f5;        /* Soft Lavender Blush */
+            --bg-card: #ffffff;        /* Pure White Card */
+            --bg-ice: #fde8f0;         /* Soft Pastel Rose */
+            --header-bg: rgba(255, 240, 245, 0.92);
+            
+            --text-main: #4a2e39;      /* Deep Soft Plum */
+            --text-muted: #8c4161;     /* Aesthetic Rose Darker for readability */
+            --heading-color: #d63384;  /* Cute Hot Pink / Magenta */
+            
+            --btn-dark: #ff69b4;       /* Hot Pink Accent Button */
+            --btn-text: #ffffff;
+            
+            --border-light: rgba(255, 105, 180, 0.25);
+            --border-glow: rgba(255, 105, 180, 0.6);
+            --shadow-subtle: 0 12px 30px rgba(255, 182, 193, 0.35);
+            --shadow-hover: 0 18px 40px rgba(255, 105, 180, 0.3);
+            --card-radius: 24px;       /* Soft Rounded Girly Cards */
+            --btn-radius: 50px;        /* Cute Pill-Shaped Buttons */
         }
 
         * {
@@ -62,15 +88,35 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--text-main);
             background-color: var(--bg-body);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
             transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        /* Editorial Serif Typography for Luxury Feel */
         h1, h2, h3, h4, .logo, .luxury-heading {
             font-family: 'Playfair Display', serif;
             letter-spacing: 0.05em;
+        }
+
+        /* Hide girly accents by default in Dark/Light mode */
+        .girly-accent {
+            display: none;
+        }
+
+        /* Girly Touches applied strictly in Pink Mode */
+        body.pink-mode .badge {
+            background: #ffe6f0;
+            color: #d63384;
+            border-color: #ff69b4;
+            font-weight: 700;
+        }
+
+        body.pink-mode .girly-accent {
+            display: inline-block;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: #ff1493;
+            margin-left: 0.3rem;
         }
 
         /* Reveal Animations */
@@ -112,7 +158,7 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.65rem;
             font-weight: 700;
             color: var(--heading-color);
             text-decoration: none;
@@ -131,8 +177,8 @@
             text-decoration: none;
             color: var(--text-main);
             font-weight: 500;
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
+            font-size: 0.92rem; /* Adjusted for better legibility */
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             transition: color 0.3s ease;
         }
@@ -144,30 +190,32 @@
         .nav-btn {
             background: var(--btn-dark);
             color: var(--btn-text) !important;
-            padding: 0.65rem 1.6rem;
-            border-radius: 2px;
+            padding: 0.7rem 1.7rem;
+            border-radius: var(--btn-radius);
             font-weight: 600 !important;
-            letter-spacing: 0.12em !important;
+            font-size: 0.88rem !important;
+            letter-spacing: 0.1em !important;
             transition: all 0.3s ease !important;
         }
 
         .nav-btn:hover {
             opacity: 0.9;
             transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
         }
 
         .theme-toggle-btn {
             background: transparent;
             border: 1px solid var(--border-light);
             color: var(--text-main);
-            width: 38px;
-            height: 38px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
         }
 
@@ -185,28 +233,28 @@
 
         .hamburger span {
             width: 100%;
-            height: 1px;
+            height: 2px;
             background-color: var(--heading-color);
             transition: all 0.3s ease;
         }
 
         /* General Section Layout */
         section {
-            padding: 6rem 2rem;
+            padding: 6.5rem 2rem;
             max-width: 1280px;
             margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            max-width: 700px;
+            max-width: 720px;
             margin: 0 auto 4rem;
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             color: var(--heading-color);
-            font-weight: 400;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.12em;
             margin-bottom: 1rem;
@@ -214,9 +262,9 @@
 
         .section-desc {
             color: var(--text-muted);
-            font-size: 0.95rem;
-            letter-spacing: 0.05em;
-            font-weight: 300;
+            font-size: 1.05rem; /* Increased size */
+            letter-spacing: 0.03em;
+            font-weight: 400; /* Increased weight for legibility */
         }
 
         /* 1. HOME / HERO SECTION */
@@ -235,17 +283,18 @@
             display: inline-block;
             border: 1px solid var(--border-light);
             color: var(--text-muted);
-            padding: 0.4rem 1.4rem;
+            padding: 0.45rem 1.5rem;
             border-radius: 50px;
-            font-size: 0.75rem;
+            font-size: 0.85rem; /* Increased size */
             font-weight: 600;
             margin-bottom: 2rem;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
+            transition: all 0.3s ease;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 4.2rem;
             font-weight: 400;
             margin-bottom: 1.5rem;
             line-height: 1.2;
@@ -254,13 +303,13 @@
         }
 
         .hero p {
-            font-size: 1.1rem;
+            font-size: 1.18rem; /* Increased size */
             color: var(--text-muted);
             margin-bottom: 3rem;
-            max-width: 680px;
+            max-width: 720px;
             margin-left: auto;
             margin-right: auto;
-            font-weight: 300;
+            font-weight: 400; /* Crisp rendering */
         }
 
         .btn-group {
@@ -271,12 +320,13 @@
 
         .btn-primary, .btn-ghost {
             display: inline-block;
-            padding: 1rem 2.5rem;
-            font-size: 0.82rem;
-            letter-spacing: 0.18em;
+            padding: 1.05rem 2.6rem;
+            font-size: 0.9rem; /* Increased size */
+            letter-spacing: 0.15em;
             text-transform: uppercase;
             text-decoration: none;
             transition: all 0.3s ease;
+            border-radius: var(--btn-radius);
         }
 
         .btn-primary {
@@ -288,6 +338,7 @@
         .btn-primary:hover {
             transform: translateY(-2px);
             opacity: 0.9;
+            box-shadow: var(--shadow-hover);
         }
 
         .btn-ghost {
@@ -315,27 +366,29 @@
             border: 1px solid var(--border-light);
             padding: 2.5rem;
             box-shadow: var(--shadow-subtle);
+            border-radius: var(--card-radius);
+            transition: all 0.3s ease;
         }
 
         .spec-box h3 {
             color: var(--heading-color);
             margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-            font-weight: 400;
+            font-size: 1.35rem;
+            font-weight: 500;
             letter-spacing: 0.08em;
             text-transform: uppercase;
         }
 
         .spec-list { list-style: none; }
         .spec-list li {
-            padding: 0.75rem 0;
+            padding: 0.85rem 0;
             border-bottom: 1px dashed var(--border-light);
             display: flex;
             justify-content: space-between;
-            font-size: 0.88rem;
+            font-size: 0.98rem; /* Increased size */
         }
         .spec-list li:last-child { border-bottom: none; }
-        .spec-label { color: var(--text-muted); font-weight: 300; }
+        .spec-label { color: var(--text-muted); font-weight: 400; }
         .spec-val { font-weight: 600; color: var(--heading-color); }
 
         /* 3. ABOUT SECTION */
@@ -350,25 +403,27 @@
             padding: 2.8rem;
             border: 1px solid var(--border-light);
             box-shadow: var(--shadow-subtle);
+            border-radius: var(--card-radius);
             transition: all 0.3s ease;
         }
 
         .about-card:hover {
             border-color: var(--border-glow);
             transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
         }
 
         .about-card h3 {
             color: var(--heading-color);
             margin-bottom: 0.8rem;
-            font-size: 1.35rem;
-            font-weight: 400;
+            font-size: 1.4rem;
+            font-weight: 500;
         }
 
         .about-card p {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            font-weight: 300;
+            font-size: 1rem; /* Increased size */
+            font-weight: 400;
         }
 
         /* 4. SERVICES SECTION */
@@ -386,27 +441,29 @@
             flex-direction: column;
             justify-content: space-between;
             box-shadow: var(--shadow-subtle);
+            border-radius: var(--card-radius);
             transition: all 0.3s ease;
         }
 
         .service-card:hover {
             border-color: var(--border-glow);
             transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
         }
 
         .service-card h3 {
             color: var(--heading-color);
             margin-bottom: 1rem;
-            font-size: 1.3rem;
-            font-weight: 400;
+            font-size: 1.35rem;
+            font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
 
         .service-card p {
             color: var(--text-muted);
-            font-size: 0.88rem;
-            font-weight: 300;
+            font-size: 0.98rem; /* Increased size */
+            font-weight: 400;
             margin-bottom: 2rem;
         }
 
@@ -414,8 +471,8 @@
             color: var(--text-main);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.78rem;
-            letter-spacing: 0.15em;
+            font-size: 0.88rem; /* Increased size */
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             border-bottom: 1px solid var(--border-light);
             padding-bottom: 0.3rem;
@@ -432,7 +489,7 @@
             background: var(--bg-ice);
             border-top: 1px solid var(--border-light);
             border-bottom: 1px solid var(--border-light);
-            padding: 6rem 2rem;
+            padding: 6.5rem 2rem;
         }
 
         .portfolio-grid {
@@ -446,31 +503,40 @@
         .portfolio-card {
             background: var(--bg-card);
             border: 1px solid var(--border-light);
+            border-radius: var(--card-radius);
             overflow: hidden;
             transition: all 0.3s ease;
+            box-shadow: var(--shadow-subtle);
         }
 
         .portfolio-card:hover {
             border-color: var(--border-glow);
             transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
         }
 
         .portfolio-img {
             height: 240px;
-            background: #181818;
+            background: #121e36;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--text-muted);
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             letter-spacing: 0.08em;
             border-bottom: 1px solid var(--border-light);
+            transition: background 0.4s ease;
         }
 
         body.light-mode .portfolio-img {
             background: #e7e5e0;
+        }
+
+        body.pink-mode .portfolio-img {
+            background: #fce4ec;
+            color: #d63384;
         }
 
         .portfolio-info {
@@ -479,19 +545,19 @@
 
         .portfolio-info h3 {
             color: var(--heading-color);
-            font-size: 1.2rem;
-            font-weight: 400;
-            margin-bottom: 0.3rem;
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
         }
 
         .portfolio-info p {
             color: var(--text-muted);
-            font-size: 0.82rem;
-            font-weight: 300;
-            letter-spacing: 0.05em;
+            font-size: 0.92rem; /* Increased size */
+            font-weight: 400;
+            letter-spacing: 0.03em;
         }
 
-        /* 6. CONTACT SECTION & FORM FIXES */
+        /* 6. CONTACT SECTION */
         .contact-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -500,36 +566,39 @@
             padding: 4rem 3rem;
             border: 1px solid var(--border-light);
             box-shadow: var(--shadow-subtle);
+            border-radius: var(--card-radius);
             width: 100%;
+            transition: all 0.3s ease;
         }
 
         .contact-info h3 {
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             color: var(--heading-color);
             margin-bottom: 1rem;
-            font-weight: 400;
+            font-weight: 500;
         }
 
         .contact-info p {
             color: var(--text-muted);
             margin-bottom: 2rem;
-            font-weight: 300;
+            font-size: 1.02rem;
+            font-weight: 400;
         }
 
         .contact-detail {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
-            font-size: 0.9rem;
+            gap: 1.3rem;
+            font-size: 0.98rem;
         }
 
         .contact-detail div strong {
             color: var(--heading-color);
             text-transform: uppercase;
-            font-size: 0.78rem;
-            letter-spacing: 0.15em;
+            font-size: 0.85rem; /* Increased size */
+            letter-spacing: 0.12em;
             display: block;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.25rem;
         }
 
         .contact-form {
@@ -543,26 +612,26 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
             font-weight: 600;
-            font-size: 0.75rem;
+            font-size: 0.85rem; /* Increased size */
             color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.12em;
         }
 
-        /* Inayos ang inputs at textarea para pantay sa mobile at desktop */
         .form-group input,
         .form-group textarea {
             display: block;
             width: 100%;
             box-sizing: border-box;
-            padding: 1rem 1.2rem;
+            padding: 1.1rem 1.3rem;
             border: 1px solid var(--border-light);
             background-color: var(--bg-body);
             color: var(--text-main);
-            font-size: 0.9rem;
+            font-size: 0.98rem; /* Increased size */
             font-family: inherit;
+            border-radius: calc(var(--card-radius) / 2);
             transition: all 0.3s ease;
             resize: vertical;
             margin: 0;
@@ -571,7 +640,8 @@
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--text-main);
+            border-color: var(--heading-color);
+            box-shadow: 0 0 10px var(--border-glow);
         }
 
         footer {
@@ -579,13 +649,13 @@
             color: var(--text-muted);
             text-align: center;
             padding: 4rem 2rem;
-            font-size: 0.82rem;
-            letter-spacing: 0.1em;
+            font-size: 0.9rem; /* Increased size */
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             border-top: 1px solid var(--border-light);
         }
 
-        /* Responsive Breakpoints */
+        /* Mobile Breakpoints */
         @media (max-width: 768px) {
             .hamburger { display: flex; }
             .nav-links {
@@ -606,14 +676,13 @@
                 padding: 2rem;
             }
             .nav-links.open { right: 0; }
-            .hero h1 { font-size: 2.6rem; }
-            .section-title { font-size: 1.8rem; }
-            section { padding: 4rem 1.2rem; }
+            .hero h1 { font-size: 2.8rem; }
+            .section-title { font-size: 1.9rem; }
+            section { padding: 4.5rem 1.2rem; }
 
-            /* Inayos para pantay at hindi mag-overflow ang layout sa mobile */
             .contact-container { 
                 grid-template-columns: 1fr;
-                padding: 2rem 1.25rem; 
+                padding: 2.2rem 1.25rem; 
                 gap: 2.5rem; 
             }
         }
@@ -624,7 +693,7 @@
     <!-- Header Navigation -->
     <header>
         <nav>
-            <a href="#home" class="logo">LUMIST</a>
+            <a href="#home" class="logo">DAYVEIL</a>
             
             <button class="hamburger" id="hamburger-btn" aria-label="Toggle Navigation">
                 <span></span><span></span>
@@ -639,7 +708,7 @@
                 <li><a href="#contact" class="nav-btn nav-item">Contact</a></li>
                 <li>
                     <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
-                        <span id="theme-icon">☀️</span>
+                        <span id="theme-icon">🌙</span>
                     </button>
                 </li>
             </ul>
@@ -649,9 +718,9 @@
     <!-- PAGE 1: HOME -->
     <section id="home" class="hero">
         <div class="hero-content reveal">
-            <div class="badge">Aesthetic Ambient Studio</div>
-            <h1>Under Development</h1>
-            <p>LUMIST is a thoughtfully designed DIY lamp and humidifier bringing warm ambient light and fine ultrasonic mist into one compact piece.</p>
+            <div class="badge">Aesthetic Ambient Studio ✨</div>
+            <h1>Under Development <span class="girly-accent">♡</span></h1>
+            <p>DAYVEIL is a thoughtfully designed DIY lamp and humidifier bringing warm ambient light and fine ultrasonic mist into one compact piece.</p>
             
             <div class="btn-group">
                 <a href="#contact" class="btn-primary">Order Now</a>
@@ -664,7 +733,7 @@
     <section id="details">
         <div class="section-header reveal">
             <h2 class="section-title">Technical Specifications</h2>
-            <p class="section-desc">Precision engineering crafted for modern interiors.</p>
+            <p class="section-desc">Precision engineering crafted for modern aesthetic spaces.</p>
         </div>
 
         <div class="details-grid">
@@ -724,7 +793,7 @@
     <section id="services">
         <div class="section-header reveal">
             <h2 class="section-title">Browse Our Features</h2>
-            <p class="section-desc">Explore what makes LUMIST an essential desk companion.</p>
+            <p class="section-desc">Explore what makes DAYVEIL an essential desk companion.</p>
         </div>
 
         <div class="services-grid">
@@ -747,7 +816,7 @@
             <div class="service-card reveal delay-1">
                 <div>
                     <h3>Custom DIY Kits</h3>
-                    <p>Complete set with step-by-step guidance for assembling your personalized LUMIST edition.</p>
+                    <p>Complete set with step-by-step guidance for assembling your personalized DAYVEIL edition.</p>
                 </div>
                 <a href="#contact" class="service-link">Inquire Feature &rarr;</a>
             </div>
@@ -779,10 +848,10 @@
             </div>
 
             <div class="portfolio-card reveal delay-2">
-                <div class="portfolio-img">Edition 02 — Dark Sapphire</div>
+                <div class="portfolio-img">Edition 02 — Midnight Navy</div>
                 <div class="portfolio-info">
                     <h3>Midnight Luxe Edition</h3>
-                    <p>Matte Slate Finish / Deep Contrast</p>
+                    <p>Matte Slate Navy / Deep Contrast</p>
                 </div>
             </div>
 
@@ -814,14 +883,14 @@
                     </div>
                     <div>
                         <strong>Social Studio</strong>
-                        @LUMIST_official
+                        @Dayveil_official
                     </div>
                 </div>
             </div>
 
             <div class="contact-form">
                 <form action="https://formsubmit.co/jheanayrish.uraga@gmail.com" method="POST">
-                    <input type="hidden" name="_subject" value="New Inquiry for LUMIST Luxury Studio">
+                    <input type="hidden" name="_subject" value="New Inquiry for DAYVEIL Luxury Studio">
                     <input type="hidden" name="_captcha" value="false">
 
                     <div class="form-group">
@@ -849,7 +918,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 LUMIST Studio. All rights reserved.</p>
+        <p>&copy; 2026 DAYVEIL Studio. All rights reserved.</p>
     </footer>
 
     <!-- JavaScript Controls -->
@@ -869,27 +938,46 @@
             });
         });
 
-        // Theme Toggle (Default is Dark Luxe, toggles to Light Luxe)
+        // Theme Toggle System (Cycles: Midnight Navy 🌙 -> Light ☀️ -> Pink 🌸 -> Midnight Navy 🌙)
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
 
-        const currentTheme = localStorage.getItem('theme');
-        if (currentTheme === 'light') {
-            document.body.classList.add('light-mode');
-            themeIcon.textContent = '🌙';
+        function applyTheme(theme) {
+            document.body.classList.remove('light-mode', 'pink-mode');
+            
+            if (theme === 'light') {
+                document.body.classList.add('light-mode');
+                themeIcon.textContent = '☀️';
+            } else if (theme === 'pink') {
+                document.body.classList.add('pink-mode');
+                themeIcon.textContent = '🌸';
+            } else {
+                themeIcon.textContent = '🌙'; // Midnight Navy default
+            }
+            
+            localStorage.setItem('theme', theme);
         }
 
+        // Initialize Theme from LocalStorage or default to navy
+        const savedTheme = localStorage.getItem('theme') || 'navy';
+        applyTheme(savedTheme);
+
         themeToggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('light-mode');
-            const isLight = document.body.classList.contains('light-mode');
+            let nextTheme = 'navy';
             
+            if (document.body.classList.contains('light-mode')) {
+                nextTheme = 'pink';
+            } else if (document.body.classList.contains('pink-mode')) {
+                nextTheme = 'navy';
+            } else {
+                nextTheme = 'light';
+            }
+
             themeIcon.style.transform = 'scale(1.2)';
             setTimeout(() => {
-                themeIcon.textContent = isLight ? '🌙' : '☀️';
+                applyTheme(nextTheme);
                 themeIcon.style.transform = 'scale(1)';
             }, 200);
-            
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
         });
 
         // Scroll Animations
